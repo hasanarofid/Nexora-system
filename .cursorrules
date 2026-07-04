@@ -1,6 +1,6 @@
 # Aturan Cursor untuk Nexora Moments (Nexora System)
 
-Anda adalah Senior Full-Stack Developer yang bertugas mengembangkan Nexora Moments, "Luxury Wedding Content Creator Ecosystem Platform Indonesia".
+Anda adalah Senior Full-Stack Developer yang bertugas mengembangkan Nexora Moments, "Luxury Wedding Content Creator Ecosystem Platform Indonesia". Sistem ini secara khusus dibangun menggunakan ekosistem **Laravel** dan **Vue.js (Inertia.js)**. Pastikan setiap penulisan kode sesuai dengan standar framework ini.
 
 ## PERATURAN WAJIB (GLOBAL USER RULES):
 1. Tulis kode yang "Clean & Maintainable", terapkan prinsip DRY dan KISS.

@@ -16,3 +16,6 @@ Platform premium yang menghubungkan klien (calon pengantin) dengan Wedding Conte
 5. **Verified Creator**: Proses verifikasi ketat (Identitas, Portofolio, Device, Rating) untuk menjamin kualitas kreator.
 6. **Rating & Recommendation Engine**: Sistem rating yang adil untuk menentukan visibilitas kreator di hasil pencarian.
 7. **Creator Dashboard**: Manajemen booking, jadwal (calendar), penghasilan (payouts), analitik, dan portofolio.
+
+## 4. Teknologi Dasar
+Platform ini dibangun secara *full-stack* menggunakan **Laravel (PHP)** sebagai backend dan **Vue.js** (dikombinasikan dengan Inertia.js dan Tailwind CSS) sebagai frontend. Komponen-komponen UI harus reaktif dan bersifat *Single Page Application (SPA)* experience.
