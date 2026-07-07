@@ -331,7 +331,7 @@ const sameDayEdit = ref(true);
 
                     <!-- Creator Grid -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-5 mb-12">
-                        <Link :href="`/creator/${creator.name.toLowerCase().replace(/\\s+/g, '-')}`" v-for="(creator, i) in creators" :key="i" class="bg-[#121212] rounded-xl overflow-hidden border border-gray-800 hover:border-[#cba358]/50 transition duration-300 group cursor-pointer flex flex-col h-full shadow-lg block">
+                        <Link :href="`/creator/${creator.name.toLowerCase().replaceAll(' ', '-')}`" v-for="(creator, i) in creators" :key="i" class="bg-[#121212] rounded-xl overflow-hidden border border-gray-800 hover:border-[#cba358]/50 transition duration-300 group cursor-pointer flex flex-col h-full shadow-lg block">
                             <!-- Image container with 3:4 aspect ratio -->
                             <div class="relative pt-[133%] bg-gray-900 overflow-hidden">
                                 <img :src="creator.image" alt="Creator Thumbnail" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500">

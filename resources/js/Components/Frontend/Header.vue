@@ -12,7 +12,7 @@
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex space-x-8 items-center">
-                    <Link href="/explore" :class="[$page.url.startsWith('/explore') ? 'text-[#cba358] border-b-2 border-[#cba358] pb-1' : 'text-white hover:text-[#cba358]']" class="text-sm font-medium transition">Explore Creators</Link>
+                    <Link href="/explore" :class="[$page.url.startsWith('/explore') || $page.url.startsWith('/creator') ? 'text-[#cba358] border-b-2 border-[#cba358] pb-1' : 'text-white hover:text-[#cba358]']" class="text-sm font-medium transition">Explore Creators</Link>
                     <a href="#" class="text-sm font-medium text-white hover:text-[#cba358] transition">How It Works</a>
                     <a href="#" class="text-sm font-medium text-white hover:text-[#cba358] transition">For Creators</a>
                     <a href="#" class="text-sm font-medium text-white hover:text-[#cba358] transition">Pricing</a>
