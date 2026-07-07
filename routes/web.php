@@ -12,6 +12,8 @@ use Inertia\Inertia;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/explore', [HomeController::class, 'explore'])->name('explore');
+Route::get('/creator/{username}', [HomeController::class, 'showCreator'])->name('creator.show');
 
 
 Route::get('/dashboard', function () {

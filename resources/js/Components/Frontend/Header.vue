@@ -3,27 +3,28 @@
         <div class="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-16">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                <Link href="/" class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
                     <div class="flex flex-col">
                         <span class="text-2xl tracking-widest font-serif text-[#cba358] uppercase leading-none">Nexora</span>
-                        <span class="text-[10px] tracking-[0.3em] text-gray-400 uppercase mt-1">Moments</span>
+                        <span class="text-[10px] tracking-[0.3em] text-[#cba358] uppercase mt-1">Moments</span>
                     </div>
-                </div>
+                </Link>
 
                 <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="text-sm font-medium text-white hover:text-[#cba358] transition">Explore Creators</a>
-                    <a href="#" class="text-sm font-medium text-gray-300 hover:text-[#cba358] transition">How It Works</a>
-                    <a href="#" class="text-sm font-medium text-gray-300 hover:text-[#cba358] transition">For Creators</a>
-                    <a href="#" class="text-sm font-medium text-gray-300 hover:text-[#cba358] transition">Pricing</a>
-                    <a href="#" class="text-sm font-medium text-gray-300 hover:text-[#cba358] transition">About Us</a>
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <Link href="/explore" :class="[$page.url.startsWith('/explore') ? 'text-[#cba358] border-b-2 border-[#cba358] pb-1' : 'text-white hover:text-[#cba358]']" class="text-sm font-medium transition">Explore Creators</Link>
+                    <a href="#" class="text-sm font-medium text-white hover:text-[#cba358] transition">How It Works</a>
+                    <a href="#" class="text-sm font-medium text-white hover:text-[#cba358] transition">For Creators</a>
+                    <a href="#" class="text-sm font-medium text-white hover:text-[#cba358] transition">Pricing</a>
+                    <a href="#" class="text-sm font-medium text-white hover:text-[#cba358] transition">About Us</a>
+                    <a href="#" class="text-sm font-medium text-white hover:text-[#cba358] transition">Help</a>
                 </nav>
 
                 <!-- Desktop Actions -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="#" class="text-sm font-medium text-[#cba358] border border-[#cba358] bg-[#0d0d0d]/60 backdrop-blur-sm px-4 py-2 rounded-md hover:bg-[#cba358] hover:text-black transition">Become a Creator</a>
-                    <a href="#" class="text-sm font-medium text-white hover:text-[#cba358] transition drop-shadow-md">Login</a>
-                    <a href="#" class="text-sm font-medium bg-[#cba358] text-black px-4 py-2 rounded-md hover:bg-[#b08d48] transition shadow-lg">Sign Up</a>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#" class="text-sm font-medium text-[#cba358] border border-[#cba358] px-5 py-2 rounded-md hover:bg-[#cba358] hover:text-black transition">Become a Creator</a>
+                    <a href="#" class="text-sm font-medium text-white hover:text-[#cba358] transition">Login</a>
+                    <a href="#" class="text-sm font-medium bg-[#cba358] text-black px-6 py-2 rounded-md hover:bg-[#b08d48] transition">Sign Up</a>
                 </div>
 
                 <!-- Mobile Notifications & Menu (Mock) -->
@@ -38,4 +39,5 @@
 </template>
 
 <script setup>
+import { Link } from '@inertiajs/vue3';
 </script>

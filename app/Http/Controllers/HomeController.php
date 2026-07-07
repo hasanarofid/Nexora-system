@@ -14,22 +14,32 @@ class HomeController extends Controller
     /**
      * Display the dynamic frontend homepage.
      */
-    public function index()
+    /**
+     * Get shared frontend data (settings, navigation).
+     */
+    private function getSharedData()
     {
-        // 1. Get settings as key-value
         $settingsRaw = Setting::all();
         $settings = $settingsRaw->pluck('value', 'key')->toArray();
         
-        // Append site_logo_url
         $logoSetting = $settingsRaw->firstWhere('key', 'site_logo');
         $settings['site_logo_url'] = $logoSetting ? $logoSetting->image_url : null;
 
-        // 2. Get active pages for navigation menu
         $navigation = Page::where('is_active', true)
             ->select('id', 'title', 'slug')
             ->get();
 
-        // 3. Get homepage with active sections
+        return compact('settings', 'navigation');
+    }
+
+    /**
+     * Display the dynamic frontend homepage.
+     */
+    public function index()
+    {
+        $shared = $this->getSharedData();
+
+        // Get homepage with active sections
         $homePage = Page::where('slug', 'home')
             ->where('is_active', true)
             ->with(['sections' => function ($query) {
@@ -37,7 +47,7 @@ class HomeController extends Controller
             }])
             ->first();
 
-        // 4. Get latest 3 published posts
+        // Get latest 3 published posts
         $posts = Post::where('status', 'published')
             ->with('category')
             ->latest()
@@ -55,11 +65,30 @@ class HomeController extends Controller
                 ];
             });
 
-        return Inertia::render('Welcome', [
-            'settings' => $settings,
-            'navigation' => $navigation,
+        return Inertia::render('Welcome', array_merge($shared, [
             'page' => $homePage,
             'posts' => $posts,
+        ]));
+    }
+
+    /**
+     * Display the Explore Creators page.
+     */
+    public function explore()
+    {
+        return Inertia::render('Explore', $this->getSharedData());
+    }
+
+    /**
+     * Display the Creator Profile page.
+     */
+    public function showCreator($username)
+    {
+        // Add minimal dummy data for the creator based on username if needed, 
+        // or just pass shared data to render the component.
+        $data = array_merge($this->getSharedData(), [
+            'username' => $username
         ]);
+        return Inertia::render('Creators/Show', $data);
     }
 }

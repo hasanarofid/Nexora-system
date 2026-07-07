@@ -14,13 +14,13 @@
         </div>
 
         <div class="relative group">
-            <!-- Left Arrow (Decorative/UI) -->
-            <button class="absolute left-0 top-1/2 -translate-y-1/2 -ml-5 z-10 w-10 h-10 rounded-full bg-[#131313] border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hidden lg:flex shadow-xl opacity-0 group-hover:opacity-100 transition duration-300">
+            <!-- Left Arrow -->
+            <button @click="scroll('left')" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-5 z-10 w-10 h-10 rounded-full bg-[#131313] border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hidden lg:flex shadow-xl opacity-0 group-hover:opacity-100 transition duration-300">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
             </button>
 
             <!-- Horizontal Scroll Container -->
-            <div class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 snap-x" style="scrollbar-width: none; -ms-overflow-style: none;">
+            <div ref="scrollContainer" class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 snap-x scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
                 <!-- Hide scrollbar hack for webkit in a style block or global css, here we use inline for standard -->
                 <CreatorCard
                     v-for="(creator, i) in creators" :key="i"
@@ -36,8 +36,8 @@
                 />
             </div>
 
-            <!-- Right Arrow (Decorative/UI) -->
-            <button class="absolute right-0 top-1/2 -translate-y-1/2 -mr-5 z-10 w-10 h-10 rounded-full bg-[#131313] border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hidden lg:flex shadow-xl opacity-0 group-hover:opacity-100 transition duration-300">
+            <!-- Right Arrow -->
+            <button @click="scroll('right')" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-5 z-10 w-10 h-10 rounded-full bg-[#131313] border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hidden lg:flex shadow-xl opacity-0 group-hover:opacity-100 transition duration-300">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             </button>
         </div>
@@ -53,6 +53,19 @@
 <script setup>
 import { ref } from 'vue';
 import CreatorCard from './CreatorCard.vue';
+
+const scrollContainer = ref(null);
+
+const scroll = (direction) => {
+    if (scrollContainer.value) {
+        const scrollAmount = 400; // Adjust based on card width
+        if (direction === 'left') {
+            scrollContainer.value.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+            scrollContainer.value.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    }
+};
 
 // Mock data based on the design
 const creators = ref([
